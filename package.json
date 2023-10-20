@@ -1,0 +1,29 @@
+{
+  "name": "elice-ts-boardproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm-run-all --parallel start:**",
+    "start:server": "cd server && nodemon server",
+    "start:client": "cd client && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hyunji14/elice-ts-boardProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hyunji14/elice-ts-boardProject/issues"
+  },
+  "homepage": "https://github.com/Hyunji14/elice-ts-boardProject#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "npm-run-all": "^4.1.5"
+  }
+}
