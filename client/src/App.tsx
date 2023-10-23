@@ -11,11 +11,9 @@ import './css/App.module.css';
 function App() {
   return (
     <div>
-      <Header />
-
       <Router>
         <Routes>
-          <Route path='/home' element={<Home />}></Route>
+          <Route path='/' element={<Home />}></Route>
           <Route path='/write' element={<Write />}></Route>
         </Routes>
       </Router>

@@ -11,8 +11,8 @@ function Header() {
       </div>
 
       <div className={styles.header_btns}>
-        <a>목록</a>
-        <a>글쓰기</a>
+        <Link to='/'>목록</Link>
+        <Link to='/write'>글쓰기</Link>
       </div>
     </div>
   );

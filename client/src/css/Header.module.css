@@ -28,11 +28,13 @@
   cursor: pointer;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
 }
 
 .header_btns a:first-child {
   background-color: transparent;
   border: none;
+  color: black;
 }
 
 .header_btns a:last-child {
@@ -44,6 +46,7 @@
   color: white;
 }
 
-a:active {
-  text-decoration: non;
+a:active,
+a:visited {
+  text-decoration: none;
 }
