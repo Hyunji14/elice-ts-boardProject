@@ -8,7 +8,7 @@ const PostSchemas = new Schema(
     author: { type: String, required: true },
   },
   {
-    collection: "Post",
+    collection: "Post", // 몽고에서 변경되지 않게 설정
   }
 );
 

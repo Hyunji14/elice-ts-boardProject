@@ -5,7 +5,6 @@ const app = express();
 // const { MONGO_USER, MONGO_PASS } = process.env;
 const { Post } = require("./models");
 const postRouter = require("./router/postRouter");
-const writeRouter = require("./router/writeRouter");
 
 // 몽고디비 연결
 mongoose
@@ -30,8 +29,7 @@ app.get("/", (req, res) => {
 });
 
 // 라우터 연결
-app.use("/board", postRouter); // 목록 들어가기
-app.use("/newBoard", writeRouter); // 글쓰기 들어가기
+app.use("/board", postRouter);
 
 // ejs 세팅
 app.set("view", __dirname + "/views");
@@ -44,21 +42,21 @@ app.listen(port, () => {
 });
 
 // 테스트를 위해 데이터를 삽입해봄
-async function run() {
-  let posts = [
-    {
-      title: "엘리스 스터디",
-      content: "게시판 만들어봄",
-      author: "정화",
-    },
-    {
-      title: "엘리스 스터디",
-      content: "게시판 만들어봄",
-      author: "현지",
-    },
-  ];
+// async function run() {
+//   let posts = [
+//     {
+//       title: "엘리스 스터디",
+//       content: "난 백엔드를 맡았지",
+//       author: "정화",
+//     },
+//     {
+//       title: "엘리스 스터디",
+//       content: "난 프론트엔드를 맡았지",
+//       author: "현지",
+//     },
+//   ];
 
-  await Post.create(posts);
-}
+//   await Post.create(posts);
+// }
 
-run();
+// run();

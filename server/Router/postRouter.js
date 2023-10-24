@@ -5,17 +5,12 @@ const router = Router();
 
 // 비동기 기억하기
 
-// 전체 post 검색하여 json 형태로 반환
+// 전체 조회~
 router.get("/", async (req, res) => {
   try {
     const posts = await Post.find({});
-    // if (!posts.length) {
-    //   return res.sendStatus(404).json({
-    //     message: "Post not found",
-    //   });
-    // }
-    res.json(posts);
-    res.send("목록이 있을 공간이야");
+
+    return res.json(posts);
   } catch (err) {
     res.sendStatus(500).json({
       message: "Server err",
@@ -24,16 +19,17 @@ router.get("/", async (req, res) => {
 });
 
 // :id에 해당하는 post 검색
-router.get(":id", async (req, res) => {
-  const searchId = Number(req.params.id);
+router.get("/:id", async (req, res) => {
+  // console.log(req.params._id);
+  const searchId = req.params._id;
   try {
     const post = await Post.findOne({ id: searchId });
-    // if (!post) {
-    //   return res.sendStatus(404).json({
-    //     message: "Post not found",
-    //   });
-    // }
-    res.json(post);
+    if (!post) {
+      return res.sendStatus(404).json({
+        message: "Post not found",
+      });
+    }
+    return res.json(post);
   } catch (err) {
     res.sendStatus(500).json({
       message: "Server err",
@@ -41,9 +37,28 @@ router.get(":id", async (req, res) => {
   }
 });
 
+// 새로운 게시글 생성
+router.post("/write", async (req, res) => {
+  const { title, content } = req.body;
+  try {
+    // title이랑 content를 안적으면 에러에러
+    if (!title || !content) {
+      return res.sendStatus(400).json({
+        message: "Title and Content are required",
+      });
+    }
+    const newPost = await Post.create({ title, content });
+    return res.sendStatus(200).json(newPost);
+  } catch (err) {
+    res.sendStatus(500).json({
+      message: " Server err",
+    });
+  }
+});
+
 // :id에 해당하는 post 수정
 router.put("/:id", async (req, res) => {
-  const searchId = Number(req.params.id);
+  const searchId = req.params._id;
   const { title, content } = req.body;
   try {
     const updatePost = await Post.findOneAndUpdate(
@@ -51,11 +66,11 @@ router.put("/:id", async (req, res) => {
       { title, content }
     );
     if (!updatePost) {
-      res.sendStatus(404).json({
+      return res.sendStatus(404).json({
         message: "Post NotFound",
       });
     }
-    res.json(updatePost);
+    return res.json(updatePost);
   } catch (err) {
     res.sendStatus(500).json({
       message: "Server err",
@@ -65,7 +80,7 @@ router.put("/:id", async (req, res) => {
 
 // :id에 해당하는 post 삭제
 router.delete("/:id", async (req, res) => {
-  const searchId = Number(req.params.id);
+  const searchId = req.params._id;
   try {
     await Post.deleteOne({ id: searchId });
     res.sendStatus(204);

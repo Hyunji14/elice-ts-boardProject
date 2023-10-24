@@ -2,7 +2,7 @@
   "name": "simple-board",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "npm-run-all --parallel start:**",
     "start:server": "cd server && nodemon server",
