@@ -1,5 +1,5 @@
 {
-  "name": "elice-ts-boardproject",
+  "name": "simple-board",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -20,7 +20,11 @@
   },
   "homepage": "https://github.com/Hyunji14/elice-ts-boardProject#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongodb": "^6.2.0",
+    "mongoose": "^7.6.3"
   },
   "devDependencies": {
     "nodemon": "^3.0.1",
